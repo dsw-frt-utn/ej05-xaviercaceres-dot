@@ -28,6 +28,17 @@ public class VehiculoCombustible: Vehiculo
 
     public override double CalcularConsumo(double kilometros)
     {
-        return kilometros * kilometrosPorLitro;
+        double consumoBase = kilometros / this.kilometrosPorLitro;
+        double consumoExtra = 0;
+
+
+        if (this.anio <= 2021)
+        {
+            consumoExtra = (kilometros / 15) * this.litrosExtra;
+        }
+
+        double total = consumoBase + consumoExtra;
+
+        return total;
     }
 }
